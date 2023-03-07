@@ -3,6 +3,7 @@ import "./App.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
+import Footer from "../Footer/Footer";
 import Spotify from "../../util/Spotify";
 
 class App extends React.Component {
@@ -43,7 +44,7 @@ class App extends React.Component {
   }
 
   savePlaylist() {
-    const trackUris = [this.state.playlistTracks.map((track) => track.uri)];
+    const trackUris = this.state.playlistTracks.map((track) => track.uri);
     Spotify.savePlaylist(this.state.playlistName, trackUris).then(() => {
       this.setState({
         playlistName: "New Playlist",
@@ -80,6 +81,7 @@ class App extends React.Component {
             />
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
